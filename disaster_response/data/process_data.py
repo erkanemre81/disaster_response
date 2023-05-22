@@ -46,7 +46,7 @@ def clean_data(df):
 
     category_colnames = row.apply(lambda x: x[:-2]) # extract a list of new column names for categories.
 
-    categories.columns = category_colnames.to_list() # rename the columns of `categories`
+    categories.columns = category_colnames # rename the columns of `categories`
 
     for column in categories:
     # set each value to be the last character of the string
