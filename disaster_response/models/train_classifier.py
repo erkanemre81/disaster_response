@@ -30,7 +30,7 @@ nltk.download(['punkt', 'wordnet', 'stopwords'])
 def load_data(database_filepath):
 
     """
-    it loads data from database
+    loads data from database
     
     Parameters:
     database_filepath: Filepath to the database
@@ -51,7 +51,7 @@ def load_data(database_filepath):
     return X,Y
 
 
-def mytokenizer(text):
+def tokenize(text):
 
     """
     normalize, tokenize, remove stop words and lemmatize text
@@ -95,7 +95,7 @@ def build_model():
     """
 
     pipeline = Pipeline([
-    ('vect', TfidfVectorizer(tokenizer=mytokenizer)),
+    ('vect', TfidfVectorizer(tokenizer=tokenize)),
     ('clf',MultiOutputClassifier(lgb.LGBMClassifier()))])
 
     parameters = {
