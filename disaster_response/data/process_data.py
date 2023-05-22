@@ -28,13 +28,15 @@ def load_data(messages_filepath, categories_filepath):
 
 def clean_data(df):
     """
-    Clean dataframe
-    
+    splits categories into separate category columns
+    converts column from string to binary classes
+    concatenate the original dataframe with the new `categories` dataframe
+
     Parameters:
-    df: DataFrame
+    df: DataFrame of messages and categories 
     
     Returns:
-    df: Cleaned DataFrame
+    df: cleaned DataFrame of messages and categories
     
     """
     
@@ -66,7 +68,16 @@ def clean_data(df):
     return df
     
 def save_data(df, database_filepath):
-    """Stores df in a SQLite database."""
+    """
+    Stores df in a SQLite database.
+    
+    Parameters:
+    df: DataFrame
+    database_filepath: SQLite database file
+    
+    Returns: There is no return value
+    
+    """
 
     engine = create_engine(f'sqlite:///{database_filepath}')
     df.to_sql('disaster_messages', engine, index=False, if_exists='replace')
